@@ -5,7 +5,7 @@
 #include <vector>
 
 using namespace std;
-using namespace ariel;
+using namespace ariel; 
 
 TEST_SUITE("Fraction constructors tests") {
 
