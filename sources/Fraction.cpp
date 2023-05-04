@@ -22,22 +22,25 @@ using namespace std;
 // constructor
 Fraction::Fraction(int numerator, int denominator) : Numerator_(numerator), Denominator_(denominator)
 {
-    // in case denominator equal to zero - throw an exception
-    if(denominator == 0)
+    // Numerator and Denominator are valid
+    if( ((numerator >= MIN_INT) && (numerator <= MAX_INT)) && ((denominator >= MIN_INT) && (denominator <= MAX_INT)) )
     {
-        throw invalid_argument("Denominator can't be 0, you can't devide by zero.\n");
-        return;
+        // in case denominator equal to zero - throw an exception
+        if(denominator == 0)
+        {
+            throw invalid_argument("Denominator can't be 0, you can't devide by zero.\n");
+            return;
+        }
+
+        // reduce the fraction
+        reduceFraction();
     }
 
-    // in case of overflow in denominator/numerator - throw an exception
-    if( (numerator > MAX_INT) || (denominator > MAX_INT) || (numerator < MIN_INT) || (denominator < MIN_INT) )
+    // Numerator and Denominator are invalid - overflow
+    else
     {
-        throw overflow_error("Fraction with denominator/numerator that bigger/smaller than max_int/min_int \n");
-        return;
+        throw overflow_error("Numerator/Denominator overflow\n");
     }
-
-    // reduce the fraction
-    reduceFraction();
 }
 
 // constructor that takes a float
@@ -240,11 +243,6 @@ Fraction Fraction::operator*(const Fraction &other) const
     int deno2 = other.getDenominator();
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
-
-    // if( (deno1 > MAX_INT / deno2) || (nume1 > MAX_INT / nume2) || (deno1 < MIN_INT / deno2) || (nume1 < MIN_INT / nume2) )
-    // {
-    //     throw overflow_error("Denominator/Numerator overflow\n");
-    // }
 
     // the common Denominator of the 2 numbers
     int commonDenominator = deno1 * deno2;
