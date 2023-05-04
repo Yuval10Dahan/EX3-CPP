@@ -241,6 +241,11 @@ Fraction Fraction::operator*(const Fraction &other) const
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
 
+    // if( (deno1 > MAX_INT / deno2) || (nume1 > MAX_INT / nume2) || (deno1 < MIN_INT / deno2) || (nume1 < MIN_INT / nume2) )
+    // {
+    //     throw overflow_error("Denominator/Numerator overflow\n");
+    // }
+
     // the common Denominator of the 2 numbers
     int commonDenominator = deno1 * deno2;
 

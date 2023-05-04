@@ -103,7 +103,3 @@ class Fraction
     // operator ">>"
     friend istream& operator>>(istream &desiredInput, Fraction &fraction);
 };
-
-
-
-int checkOverflow(int factor1, int factor2);
