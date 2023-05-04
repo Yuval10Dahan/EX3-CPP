@@ -1,6 +1,7 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "limits": "cpp"
+        "limits": "cpp",
+        "ostream": "cpp"
     }
 }

@@ -10,6 +10,11 @@
 
 using namespace std;
 
+#define THOUSAND 1000
+#define ZERO 0
+#define ONE 1
+#define MAX_INT 2147483647
+#define MIN_INT -2147483648
 
 
 // ### Constructors ###
@@ -188,10 +193,7 @@ Fraction operator+(const Fraction &fraction, float num)
 
 Fraction operator+(float num, const Fraction &fraction)
 {
-    // turn the float into a fraction
-    Fraction other(num);
-
-    return other + fraction;
+    return fraction + num;
 }
 
 // operator "-"
@@ -262,10 +264,7 @@ Fraction operator*(const Fraction &fraction, float num)
 
 Fraction operator*(float num, const Fraction &fraction)
 {
-    // turn the float into a fraction
-    Fraction other(num);
-
-    return other * fraction;
+    return fraction * num;
 }
 
 // operator "/"
