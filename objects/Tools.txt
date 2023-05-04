@@ -1,0 +1,17 @@
+TEST CASE:  Fraction with largest possible numerator and/or denominator and overflow handling
+
+StudentTest2.cpp:734: ERROR: CHECK_THROWS_AS( f1 * f4, std::overflow_error ) did NOT throw at all!
+
+StudentTest2.cpp:735: ERROR: CHECK_THROWS_AS( f1 / f4, std::overflow_error ) did NOT throw at all!
+
+StudentTest2.cpp:737: ERROR: CHECK_THROWS_AS( f2 * f4, std::overflow_error ) did NOT throw at all!
+
+StudentTest2.cpp:738: ERROR: CHECK_THROWS_AS( f2 / f4, std::overflow_error ) did NOT throw at all!
+
+StudentTest2.cpp:747: ERROR: CHECK_THROWS_AS( f1 + f5, std::overflow_error ) did NOT throw at all!
+
+StudentTest2.cpp:748: ERROR: CHECK_THROWS_AS( f6 + f7, std::overflow_error ) did NOT throw at all!
+
+StudentTest2.cpp:750: ERROR: CHECK_THROWS_AS( f1 - f6, std::overflow_error ) did NOT throw at all!
+
+StudentTest2.cpp:751: ERROR: CHECK_THROWS_AS( f5 - f7, std::overflow_error ) did NOT throw at all!
