@@ -6,13 +6,11 @@
 #include <cmath>
 #include <limits>
 #include <cstdlib>
-#include "Fraction.hpp"
+#include "Fraction.hpp" 
 
 using namespace std;
 
-#define THOUSAND 1000
-#define ZERO 0
-#define ONE 1
+
 
 // ### Constructors ###
 
@@ -23,6 +21,13 @@ Fraction::Fraction(int numerator, int denominator) : Numerator_(numerator), Deno
     if(denominator == 0)
     {
         throw invalid_argument("Denominator can't be 0, you can't devide by zero.\n");
+        return;
+    }
+
+    // in case of overflow in denominator/numerator - throw an exception
+    if( (numerator > MAX_INT) || (denominator > MAX_INT) || (numerator < MIN_INT) || (denominator < MIN_INT) )
+    {
+        throw overflow_error("Fraction with denominator/numerator that bigger/smaller than max_int/min_int \n");
         return;
     }
 

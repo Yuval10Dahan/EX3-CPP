@@ -1,0 +1,11 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/yuval/Documents/EX3-CPP'
+clang++-14 -std=c++2a -Werror -Wsign-conversion -Isources --compile TestRunner.cpp -o TestRunner.o
+clang++-14 -std=c++2a -Werror -Wsign-conversion -Isources --compile StudentTest1.cpp -o StudentTest1.o
+clang++-14 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Fraction.cpp -o objects/Fraction.o
+clang++-14 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/myTest.cpp -o objects/myTest.o
+clang++-14 -std=c++2a -Werror -Wsign-conversion -Isources TestRunner.o StudentTest1.o objects/Fraction.o objects/myTest.o -o test1
+clang++-14 -std=c++2a -Werror -Wsign-conversion -Isources --compile StudentTest2.cpp -o StudentTest2.o
+clang++-14 -std=c++2a -Werror -Wsign-conversion -Isources TestRunner.o StudentTest2.o objects/Fraction.o objects/myTest.o -o test2
+make: Leaving directory '/home/yuval/Documents/EX3-CPP'
+ 

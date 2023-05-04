@@ -245,10 +245,15 @@
 
 //     cout << "##############################################################" << endl;
 
-//     // float x = 13963;
-//     // float y = 3000;
-//     // float fr = x / y;
-//     // cout << "fr = " << fr << endl;
+//     // overflow
+
+//     int max_int1 = std::numeric_limits<int>::max();
+//     int min_int1 = std::numeric_limits<int>::min();
+
+//     cout << "max int = " <<  max_int1 << endl;
+//     cout <<"max int+1 = " <<  max_int1 + 1 << endl; 
+//     cout << "min int = " <<  min_int1 << endl;
+//     cout <<"min int+1 = " <<  min_int1 - 1 << endl; 
 
     
 // }

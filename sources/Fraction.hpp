@@ -7,6 +7,11 @@ using namespace std;
 
 namespace ariel{}
 
+#define THOUSAND 1000
+#define ZERO 0
+#define ONE 1
+#define MAX_INT 2147483647
+#define MIN_INT -2147483648
 
 class Fraction
 {
