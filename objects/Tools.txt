@@ -15,3 +15,8 @@ StudentTest2.cpp:748: ERROR: CHECK_THROWS_AS( f6 + f7, std::overflow_error ) did
 StudentTest2.cpp:750: ERROR: CHECK_THROWS_AS( f1 - f6, std::overflow_error ) did NOT throw at all!
 
 StudentTest2.cpp:751: ERROR: CHECK_THROWS_AS( f5 - f7, std::overflow_error ) did NOT throw at all!
+
+
+
+sources/Fraction.cpp:179:33: error: overflow in expression; result is -2 with type 'int' [-Werror,-Winteger-overflow]
+    if( commonDenominator == (2 * MAX_INT) - 1 )

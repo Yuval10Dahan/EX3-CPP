@@ -176,6 +176,11 @@ Fraction Fraction::operator+(const Fraction &other) const
     // the common Denominator of the 2 numbers
     int commonDenominator = deno1 * deno2;
 
+    if( commonDenominator == (2 * MAX_INT) - 1 )
+    {
+        throw overflow_error("Denominator/Numerator overflow - Adding\n");
+    }
+
     // the numerator after the calculation
     int commonNumerator = (nume1 * deno2) + (nume2 * deno1);
 
@@ -244,6 +249,11 @@ Fraction Fraction::operator*(const Fraction &other) const
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
 
+    if( ( nume1 == MAX_INT && ( (nume1 != 1) || (nume1 != -1) ) ) || (deno2 == MAX_INT && ( (deno2 != 1) || (deno2 != -1) ) ) )
+    {
+        throw overflow_error("Denominator/Numerator overflow - Multiplication\n");
+    }
+
     // the common Denominator of the 2 numbers
     int commonDenominator = deno1 * deno2;
 
@@ -277,6 +287,11 @@ Fraction Fraction::operator/(const Fraction &other) const
     int deno2 = other.getDenominator();
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
+
+    if(  nume1 == MAX_INT && deno2 == MAX_INT )
+    {
+        throw overflow_error("Denominator/Numerator overflow - Devision\n");
+    }
 
     // the common Denominator of the 2 numbers(multiply by the inverse)
     int commonDenominator = deno1 * nume2;
