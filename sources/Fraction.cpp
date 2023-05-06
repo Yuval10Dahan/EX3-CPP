@@ -13,8 +13,6 @@ using namespace std;
 #define THOUSAND 1000
 #define ZERO 0
 #define ONE 1
-#define MAX_INT 2147483647
-#define MIN_INT -2147483648
 
 
 // ### Constructors ###
@@ -158,16 +156,36 @@ float Fraction::fracToFloat()
 // operator "+"
 Fraction Fraction::operator+(const Fraction &other) const
 {
+    int commonDenominator;
+    int commonNumerator;
+    int factor1;
+    int factor2;
+
     int deno1 = this->Denominator_;
     int deno2 = other.getDenominator();
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
 
-    // the common Denominator of the 2 numbers
-    int commonDenominator = deno1 * deno2;
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set commonDenominator to the result
+    if(__builtin_mul_overflow(deno1, deno2, &commonDenominator))
+    {
+        throw overflow_error("Denominator overflow\n");
+    }
 
-    // the numerator after the calculation
-    int commonNumerator = (nume1 * deno2) + (nume2 * deno1);
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set factor1 and factor2 to the results
+    if(__builtin_mul_overflow(nume1, deno2, &factor1) || __builtin_mul_overflow(nume2, deno1, &factor2))
+    {
+        throw overflow_error("Numerator overflow\n");
+    }    
+
+    // if adding causes overflow - throw an overflow error
+    // if not - set commonNumerator to the result
+    if(__builtin_add_overflow(factor1, factor2, &commonNumerator))
+    {
+        throw overflow_error("Numerator overflow\n");
+    }
 
     // the calculation result represent as a reduced fraction
     Fraction retFrac(commonNumerator, commonDenominator);
@@ -192,16 +210,36 @@ Fraction operator+(float num, const Fraction &fraction)
 // operator "-"
 Fraction Fraction::operator-(const Fraction &other) const
 {
+    int commonDenominator;
+    int commonNumerator;
+    int factor1;
+    int factor2;
+    
     int deno1 = this->Denominator_;
     int deno2 = other.getDenominator();
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
 
-    // the common Denominator of the 2 numbers
-    int commonDenominator = deno1 * deno2;
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set commonDenominator to the result
+    if(__builtin_mul_overflow(deno1, deno2, &commonDenominator))
+    {
+        throw overflow_error("Denominator overflow\n");
+    }
 
-    // the numerator after the calculation
-    int commonNumerator = (nume1 * deno2) - (nume2 * deno1);
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set factor1 and factor2 to the results
+    if(__builtin_mul_overflow(nume1, deno2, &factor1) || __builtin_mul_overflow(nume2, deno1, &factor2))
+    {
+        throw overflow_error("Numerator overflow\n");
+    }    
+
+    // if adding causes overflow - throw an overflow error
+    // if not - set commonNumerator to the result
+    if(__builtin_sub_overflow(factor1, factor2, &commonNumerator))
+    {
+        throw overflow_error("Numerator overflow\n");
+    }
 
     // the calculation result represent as a reduced fraction
     Fraction retFrac(commonNumerator, commonDenominator);
@@ -239,7 +277,7 @@ Fraction Fraction::operator*(const Fraction &other) const
 
     // if multiplication causes overflow - throw an overflow error
     // if not - set commonDenominator to the result
-    if(__builtin_mul_overflow(deno1, deno2, &c))
+    if(__builtin_mul_overflow(deno1, deno2, &commonDenominator))
     {
         throw overflow_error("Denominator overflow\n");
     }
@@ -248,7 +286,7 @@ Fraction Fraction::operator*(const Fraction &other) const
     // if not - set commonNumerator to the result
     if(__builtin_mul_overflow(nume1, nume2, &commonNumerator))
     {
-        throw overflow_error("Denominator overflow\n");
+        throw overflow_error("Numerator overflow\n");
     }
 
     // the calculation result represent as a reduced fraction
@@ -274,21 +312,27 @@ Fraction operator*(float num, const Fraction &fraction)
 // operator "/"
 Fraction Fraction::operator/(const Fraction &other) const
 {
+    int commonDenominator;
+    int commonNumerator;
+
     int deno1 = this->Denominator_;
     int deno2 = other.getDenominator();
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
 
-    if(  nume1 == MAX_INT && deno2 == MAX_INT )
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set commonDenominator to the result
+    if(__builtin_mul_overflow(deno1, nume2, &commonDenominator))
     {
-        throw overflow_error("Denominator/Numerator overflow - Devision\n");
+        throw overflow_error("Denominator overflow\n");
     }
 
-    // the common Denominator of the 2 numbers(multiply by the inverse)
-    int commonDenominator = deno1 * nume2;
-
-    // the numerator after the calculation(multiply by the inverse)
-    int commonNumerator = nume1 * deno2;
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set commonNumerator to the result
+    if(__builtin_mul_overflow(nume1, deno2, &commonNumerator))
+    {
+        throw overflow_error("Numerator overflow\n");
+    }
 
     // if the common Denominator is equal to 0 after the division throw an exception
     if(commonDenominator == 0)
