@@ -22,25 +22,15 @@ using namespace std;
 // constructor
 Fraction::Fraction(int numerator, int denominator) : Numerator_(numerator), Denominator_(denominator)
 {
-    // Numerator and Denominator are valid
-    if( ((numerator >= MIN_INT) && (numerator <= MAX_INT)) && ((denominator >= MIN_INT) && (denominator <= MAX_INT)) )
+    // in case denominator equal to zero - throw an exception
+    if(denominator == 0)
     {
-        // in case denominator equal to zero - throw an exception
-        if(denominator == 0)
-        {
-            throw invalid_argument("Denominator can't be 0, you can't devide by zero.\n");
-            return;
-        }
-
-        // reduce the fraction
-        reduceFraction();
+        throw invalid_argument("Denominator can't be 0, you can't devide by zero.\n");
+        return;
     }
 
-    // Numerator and Denominator are invalid - overflow
-    else
-    {
-        throw overflow_error("Numerator/Denominator overflow\n");
-    }
+    // reduce the fraction
+    reduceFraction();
 }
 
 // constructor that takes a float
@@ -176,11 +166,6 @@ Fraction Fraction::operator+(const Fraction &other) const
     // the common Denominator of the 2 numbers
     int commonDenominator = deno1 * deno2;
 
-    if( commonDenominator == (2 * MAX_INT) - 1 )
-    {
-        throw overflow_error("Denominator/Numerator overflow - Adding\n");
-    }
-
     // the numerator after the calculation
     int commonNumerator = (nume1 * deno2) + (nume2 * deno1);
 
@@ -244,21 +229,27 @@ Fraction operator-(float num, const Fraction &fraction)
 // operator "*"
 Fraction Fraction::operator*(const Fraction &other) const
 {
+    int commonDenominator;
+    int commonNumerator;
+    
     int deno1 = this->Denominator_;
     int deno2 = other.getDenominator();
     int nume1 = this->Numerator_;
     int nume2 = other.getNumerator();
 
-    if( ( nume1 == MAX_INT && ( (nume1 != 1) || (nume1 != -1) ) ) || (deno2 == MAX_INT && ( (deno2 != 1) || (deno2 != -1) ) ) )
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set commonDenominator to the result
+    if(__builtin_mul_overflow(deno1, deno2, &c))
     {
-        throw overflow_error("Denominator/Numerator overflow - Multiplication\n");
+        throw overflow_error("Denominator overflow\n");
     }
 
-    // the common Denominator of the 2 numbers
-    int commonDenominator = deno1 * deno2;
-
-    // the numerator after the calculation
-    int commonNumerator = nume1 * nume2;
+    // if multiplication causes overflow - throw an overflow error
+    // if not - set commonNumerator to the result
+    if(__builtin_mul_overflow(nume1, nume2, &commonNumerator))
+    {
+        throw overflow_error("Denominator overflow\n");
+    }
 
     // the calculation result represent as a reduced fraction
     Fraction retFrac(commonNumerator, commonDenominator);
