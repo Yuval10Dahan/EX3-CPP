@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May  5 09:35:25 2023
+# Make data base, printed on Tue May  9 16:54:28 2023
 
 # Variables
 
@@ -55,7 +55,7 @@ VSCODE_CODE_CACHE_PATH = /home/yuval/.config/Code/CachedData/ee2b180d582a7f601fa
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.PP2M41
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.L76P41
 # default
 .LOADED := 
 # default
@@ -91,13 +91,13 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 7478
+VSCODE_PID = 2781
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/yuval:@/tmp/.ICE-unix/1470,unix/yuval:/tmp/.ICE-unix/1470
+SESSION_MANAGER = local/yuval:@/tmp/.ICE-unix/1473,unix/yuval:/tmp/.ICE-unix/1473
 # automatic
 *F = $(notdir $*)
 # environment
@@ -139,7 +139,7 @@ LANGUAGE = en_IL:en
 # automatic
 ^F = $(notdir $^)
 # environment
-INVOCATION_ID = c18f3bbe852342c2953787ddcd6a98f5
+INVOCATION_ID = 576d2dd744a74c30bbbd9c6bf4a9ae3e
 # environment
 USERNAME = yuval
 # environment
@@ -167,7 +167,7 @@ GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # makefile
 .DEFAULT_GOAL := run
 # environment
-SYSTEMD_EXEC_PID = 1498
+SYSTEMD_EXEC_PID = 1490
 # environment
 DISPLAY = :0
 # environment
@@ -179,15 +179,15 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 5)
 TIDY = clang-tidy-14
 # environment
-MANAGERPID = 1343
+MANAGERPID = 1342
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 7478
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2781
 # environment
 _ = /usr/share/code/code
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-JOURNAL_STREAM = 8:23852
+JOURNAL_STREAM = 8:23743
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -233,10 +233,10 @@ GDMSESSION = ubuntu
 
 # Directories
 
-# . (device 2051, inode 793036): 19 files, no impossibilities.
-# sources (device 2051, inode 793386): 6 files, no impossibilities.
+# . (device 2051, inode 793036): 14 files, no impossibilities.
+# sources (device 2051, inode 793386): 5 files, no impossibilities.
 
-# 25 files, no impossibilities in 2 directories.
+# 19 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -364,12 +364,12 @@ objects/myTest.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 41 / storage = 410 B / avg = 10 B
-# current buf: size = 8162 B / used = 410 B / count = 41 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 40 / storage = 405 B / avg = 10 B
+# current buf: size = 8162 B / used = 405 B / count = 40 / avg = 10 B
 
-# strcache performance: lookups = 70 / hit rate = 41%
+# strcache performance: lookups = 64 / hit rate = 37%
 # hash-table stats:
-# Load=41/8192=1%, Rehash=0, Collisions=0/70=0%
-# Finished Make data base on Fri May  5 09:35:25 2023
+# Load=40/8192=0%, Rehash=0, Collisions=0/64=0%
+# Finished Make data base on Tue May  9 16:54:28 2023
 
  

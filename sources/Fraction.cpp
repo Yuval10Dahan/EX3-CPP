@@ -189,7 +189,6 @@ Fraction Fraction::operator+(const Fraction &other) const
 
     // the calculation result represent as a reduced fraction
     Fraction retFrac(commonNumerator, commonDenominator);
-    retFrac.reduceFraction();
 
     return retFrac;
 }
@@ -243,7 +242,6 @@ Fraction Fraction::operator-(const Fraction &other) const
 
     // the calculation result represent as a reduced fraction
     Fraction retFrac(commonNumerator, commonDenominator);
-    retFrac.reduceFraction();
 
     return retFrac;
 }
@@ -291,7 +289,6 @@ Fraction Fraction::operator*(const Fraction &other) const
 
     // the calculation result represent as a reduced fraction
     Fraction retFrac(commonNumerator, commonDenominator);
-    retFrac.reduceFraction();
 
     return retFrac;
 }
@@ -342,7 +339,6 @@ Fraction Fraction::operator/(const Fraction &other) const
 
     // the calculation result represent as a reduced fraction
     Fraction retFrac(commonNumerator, commonDenominator);
-    retFrac.reduceFraction();
 
     return retFrac;
 }
